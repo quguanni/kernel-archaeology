@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this dataset or analysis, please cite it as below."
+type: dataset
+title: "Linux Kernel Vulnerability Insights: 20 Years of Security Bug Analysis"
+abstract: >-
+  Analysis of 125,000+ Linux kernel bug-fix pairs spanning 2004-2024,
+  revealing patterns in vulnerability lifetimes, reviewer effectiveness,
+  and subsystem-specific security characteristics. Key findings include
+  a 2.1-year median bug lifetime, identification of 117 "super-reviewers"
+  who catch bugs 47% faster, and temporal patterns showing weekend commits
+  have 45% longer bug survival times.
+authors:
+  - family-names: "Huang"
+    given-names: "Jenny"
+    email: "jenny@pebblebed.com"
+    affiliation: "Pebblebed Ventures"
+    orcid: "https://orcid.org/0000-0000-0000-0000"  # Replace with your actual ORCID
+repository-code: "https://github.com/jennyhuang/kernel-vulnerability-insights"
+url: "https://huggingface.co/datasets/jennyhuang/linux-kernel-bugfix-pairs"
+keywords:
+  - linux kernel
+  - vulnerability analysis
+  - security bugs
+  - software engineering
+  - empirical study
+  - bug lifetime
+  - code review
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2025-01-20
+references:
+  - type: software
+    title: "SmartKuang: Autonomous Kernel Vulnerability Discovery"
+    authors:
+      - family-names: "Huang"
+        given-names: "Jenny"
+    repository-code: "https://github.com/jennyhuang/smartkuang"
