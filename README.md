@@ -37,14 +37,12 @@ kernel-archaeology/
 │   └── vuln_rate_*.png      # Rate analysis plots
 │
 ├── scripts/                  # Analysis scripts
-│   ├── analyze_vuln_db.py           # Parse and analyze vulnerability database
-│   ├── analyze_vuln_deep.py         # Deep analysis of vulnerability patterns
-│   ├── analyze_vuln_rate.py         # Rate-based vulnerability analysis
-│   ├── cluster_vuln.py              # Cluster vulnerabilities by features
-│   ├── visualize_rate.py            # Visualize rate analysis results
-│   ├── mine_total_commits.sh        # Extract commits from git history
-│   ├── corporate_contributions_full.py  # Analyze corporate contributions
-│   └── visualize_corporate.py       # Visualize corporate analysis
+│   ├── analyze_vuln_db.py        # Analyze vulnerability dataset from HuggingFace
+│   ├── analyze_vuln_rate.py      # Compute vulnerability rates (vulns/total commits)
+│   ├── cluster_vuln.py           # t-SNE/UMAP clustering of vulnerabilities
+│   ├── corporate_contributions.py # Analyze corporate contributions by email domain
+│   ├── visualize_corporate.py    # Generate corporate contribution visualizations
+│   └── mine_commits.sh           # Extract commits from kernel git repo
 │
 ├── methodology/              # Research methodology documentation
 │   ├── ANALYSIS_CHOICES.md  # Why we made specific analytical decisions
@@ -70,25 +68,30 @@ pip install -r requirements.txt
 ### Vulnerability Analysis
 
 ```bash
-# Analyze vulnerability patterns
-python scripts/analyze_vuln_db.py --data /path/to/vuln_commits_full.csv
-python scripts/analyze_vuln_deep.py --data /path/to/vuln_commits_full.csv
+# Analyze vulnerability patterns (loads from HuggingFace automatically)
+python scripts/analyze_vuln_db.py --output figures/
 ```
 
 ### Corporate Contributions Analysis
 
 ```bash
 # Step 1: Extract all commits from kernel git repo
-cd /path/to/linux
-git log --format="%H|%ae|%ai|%s" --since="2005-01-01" > ~/all_commits.csv
+./scripts/mine_commits.sh /path/to/linux > all_commits.csv
 
 # Step 2: Analyze corporate contributions
-python scripts/corporate_contributions_full.py --data ~/all_commits.csv \
+python scripts/corporate_contributions.py --data all_commits.csv \
     --output corporate_results.csv --yearly corporate_yearly.csv
 
 # Step 3: Generate visualizations
 python scripts/visualize_corporate.py --results corporate_results.csv \
-    --yearly corporate_yearly.csv --output-dir figures/
+    --yearly corporate_yearly.csv --output figures/
+```
+
+### Vulnerability Rate Analysis
+
+```bash
+# Compute vulnerability rates normalized by total commit activity
+python scripts/analyze_vuln_rate.py --commits all_commits.csv --output figures/
 ```
 
 ## Figures
