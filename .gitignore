@@ -1,0 +1,21 @@
+# Data files (downloaded at runtime)
+data/*.csv
+data/*.csv.gz
+data/*.parquet
+*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
