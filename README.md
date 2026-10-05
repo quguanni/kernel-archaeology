@@ -82,4 +82,4 @@ Code: MIT | Data/Figures: CC-BY-4.0
 
 ## Contact
 
-Jenny Guanni Qu · jenny@pebblebed.com · [Pebblebed Ventures](https://pebblebed.com)
+Jenny Guanni Qu · [quguanni.com](https://quguanni.com)
